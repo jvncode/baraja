@@ -1,28 +1,27 @@
 import random
 
+class Baraja():
+    naipes = []
+    __palos = ["o", "c", "e", "b"]
+    __cartas = ["A", "2", "3", "4", "5", "6", "7","S", "C", "R"]
 
-_palos = ["o", "c", "e", "b"]
-_cartas = ["A", "2", "3", "4", "5", "6", "7","S", "C", "R"]
+    def __init__(self):
+        self.naipes = []
+        for palo in self.__palos:
+            for carta  in self.__cartas:
+                self.naipes.append(carta + palo)
 
-def baraja():
+    def elige_carta(self, i, longitud):
+        return random.randint(0, len(self.naipes)-1)
 
-    result=[]
-    for palo in _palos:
-        for carta  in _cartas:
-            result.append(carta + palo)
+    def mezclar(self):
+        for i in range(len(self.naipes)):
+            al_azar = self.elige_carta, len(self.naipes)
 
-    return result
+            aux = self.naipes[i]  
+            self.naipes[i] = self.naipes[al_azar]
+            self.naipes[al_azar] = aux
 
-def mezclar(b):
-    for i in range(len(b)):
-        al_azar = random.randint(0, len(b)-1)
-
-        aux = b[i]  
-        b[i] = b[al_azar]
-        b[al_azar] = aux
-    return b
-
-
+    def repartir(self, mano, jugadores):
+        pass
     
-    
-
